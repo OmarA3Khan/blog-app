@@ -6,6 +6,8 @@ import TimelineItem from './TimelineItem.vue';
 
 const postsStore = usePosts()
 
+await postsStore.fetchPosts()
+
 </script>
 
 <template>

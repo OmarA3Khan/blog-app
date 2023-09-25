@@ -2,17 +2,23 @@
   "name": "vue-ts-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "npx ts-node src/server/index.ts"
   },
   "dependencies": {
+    "@types/cors": "2.8",
+    "@types/express": "4.17",
     "@types/luxon": "^2.3.1",
+    "cors": "2.8",
+    "express": "4.17",
     "luxon": "^2.3.1",
     "pinia": "^2.0.14",
-    "vue": "^3.3.4"
+    "ts-node": "^10.9.1",
+    "vue": "^3.3.4",
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
