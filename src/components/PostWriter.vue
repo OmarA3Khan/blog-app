@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import { TimelinePost } from '../posts';
+import { useRouter } from 'vue-router'
 import { marked } from 'marked';
 import highlightjs from 'highlight.js';
 import debounce from "lodash/debounce";
+import { usePosts } from '../stores/posts'
 
 const props = defineProps<{
     post: TimelinePost
@@ -13,6 +15,9 @@ const title = ref(props.post.title)
 const content = ref(props.post.markdown)
 const html = ref('')
 const contentEditable = ref<HTMLDivElement>()
+
+const posts = usePosts()
+const router = useRouter()
 
 function parseHTML (markdown: string) {
     marked.parse(markdown, {
@@ -45,6 +50,19 @@ function handleInput () {
     }
     content.value = contentEditable.value?.innerText
 }
+
+async function handleClick () {
+    const newPost: TimelinePost = {
+        ...props.post,
+        title: title.value,
+        markdown: content.value,
+        html: html.value
+    }
+
+    await posts.createPosts(newPost);
+    router.push("/")
+}
+
 </script>
 
 <template>
@@ -62,6 +80,13 @@ function handleInput () {
         </div>
         <div class="column">
             <div v-html="html" />
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <button class="button is-primary is-pulled-right" @click="handleClick">
+                Save Post
+            </button>
         </div>
     </div>
 </template>

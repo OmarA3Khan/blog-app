@@ -4,11 +4,11 @@ import Timeline from "../components/Timeline.vue";
 
 <template>
     <Suspense>
-    <template #default>
-        <Timeline />
-    </template>
-    <template #fallback>
-        <progress class="progress is-primary is-small" />
-    </template>
+        <template #default>
+            <Timeline />
+        </template>
+        <template #fallback>
+            <progress class="progress is-primary is-small" />
+        </template>
     </Suspense>
 </template>
