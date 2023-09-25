@@ -1,11 +1,12 @@
-<script setup lang="ts">
-import Timeline from "./components/Timeline.vue";
+<script lang="ts" setup>
+import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
   <div class="section">
     <div class="container">
-      <Timeline />
+      <Navbar />
+      <RouterView />
     </div>
   </div>
 </template>
