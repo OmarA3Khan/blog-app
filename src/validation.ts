@@ -6,9 +6,7 @@ interface Status {
 type Rule = (value: string) => Status
 
 export function length({min, max}: {min: number, max: number}): Rule {
-    console.log('invoked length');
     return function (value: string): Status {
-        console.log('invoked the return inside length');
         const result = Boolean(value.length > min && value.length < max)
 
         return {
@@ -28,9 +26,7 @@ export const required: Rule = (value:string): Status => {
 }
 
 export function validate (value: string, rules: Rule[]): Status {
-    console.log('invoked validate');
     for (const rule of rules) {
-        console.log('now inside of for loop')
         const result = rule(value)
 
         if(!result.valid) {
@@ -42,8 +38,6 @@ export function validate (value: string, rules: Rule[]): Status {
         valid: true
     }
 }
-
-console.log('running the file');
 
 console.log(
     validate('aaaa', [length({min: 5, max: 10})]),
