@@ -14,8 +14,6 @@ app.get('/posts', (_req, res) => {
 });
 
 app.post<{}, {}, Post>('/posts', (req, res) => {
-    console.log("POST request");
-    console.log("req.body:", req.body);
     const post = {...req.body, id: (Math.random() * 100000).toFixed() };
     allPosts.push(post);
     res.json(post);
