@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
-import Navbar from './components/Navbar.vue';
+import { computed } from 'vue';
 import { useModal } from './composables/modal';
-import FormInput from './components/FormInput.vue';
+import Navbar from './components/Navbar.vue';
 
 const modal = useModal()
 
@@ -11,9 +10,6 @@ const modalStyle = computed(() => {
     display: modal.show.value ? 'block' : 'none'
   }
 })
-
-const userName = ref('')
-
 </script>
 
 <template>
@@ -23,14 +19,13 @@ const userName = ref('')
         <div id="modal"></div>
       </div>
     </div>
-    <div class="modal-close is-large" @click="modal.hideModal()"></div>
+    <button class="modal-close is-large" @click="modal.hideModal()"></button>
   </div>
+
   <div class="section">
     <div class="container">
-      <FormInput :name="'Username'" v-model="userName"/>
       <Navbar />
       <RouterView />
-      {{ userName }}
     </div>
   </div>
 </template>
