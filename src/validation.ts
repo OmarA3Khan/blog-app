@@ -38,9 +38,3 @@ export function validate (value: string, rules: Rule[]): Status {
         valid: true
     }
 }
-
-console.log(
-    validate('aaaa', [length({min: 5, max: 10})]),
-    validate('sssssssssaaaass', [length({min: 5, max: 10})]),
-    validate('sasasasas', [length({min: 5, max: 10})]),
-)

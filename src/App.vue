@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { useModal } from './composables/modal';
+import { useUsers } from './stores/users'
 import Navbar from './components/Navbar.vue';
 
 const modal = useModal()
+const usersStore = useUsers()
 
 const modalStyle = computed(() => {
   return {
@@ -11,16 +13,9 @@ const modalStyle = computed(() => {
   }
 })
 
-async function authenticate () {
-  const res = await window.fetch('/api/current-user', {
-    headers: {
-      'Content-Type' : 'application/json'
-    }
-  })
-  console.log(await res.json())
-}
+console.log('usersStore.loading:', usersStore.loading);
 
-authenticate()
+usersStore.authenticate()
 </script>
 
 <template>
@@ -36,7 +31,8 @@ authenticate()
   <div class="section">
     <div class="container">
       <Navbar />
-      <RouterView />
+      <span v-if="usersStore.loading" class="loader is-large"></span>
+      <RouterView v-else />
     </div>
   </div>
 </template>
@@ -44,6 +40,14 @@ authenticate()
 <style>
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 @import "highlight.js/styles/atom-one-dark.css";
+
+.loader {
+  height: 10em;
+  width: 10em;
+  margin: 20vh auto auto auto;
+  border-right-color: #00d1b2;
+  border-top-color: #00d1b2;
+}
 
 ul {
   list-style: revert !important;
