@@ -13,8 +13,6 @@ const modalStyle = computed(() => {
   }
 })
 
-console.log('usersStore.loading:', usersStore.loading);
-
 usersStore.authenticate()
 </script>
 
