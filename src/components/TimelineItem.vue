@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { RouterLink } from 'vue-router';
 import { TimelinePost } from '../posts';
 
 defineProps<{

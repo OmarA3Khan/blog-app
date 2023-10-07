@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import { Post, TimelinePost } from '../posts';
-// import { useRouter } from 'vue-router'
 import { marked } from 'marked';
-import highlightjs from 'highlight.js';
+import hljs from 'highlight.js';
 import debounce from "lodash/debounce";
-// import { usePosts } from '../stores/posts'
 import { useUsers } from '../stores/users';
 
 const props = defineProps<{
@@ -28,7 +26,7 @@ function parseHTML (markdown: string) {
         gfm: true,
         breaks: true,
         highlight: (code:string) => {
-            return highlightjs.highlightAuto(code).value
+            return hljs.highlightAuto(code).value
         }
     }, (_err: Boolean, parseResult:string) => {
         html.value = parseResult

@@ -89,7 +89,7 @@ export const usePosts = defineStore("posts", {
                 }
             
                 return posts;
-            }, []);
+            }, [] as TimelinePost[]);
 
         }
     }

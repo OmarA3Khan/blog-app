@@ -16,7 +16,6 @@ if(!post) {
 }
 
 const canEdit = computed(() => {
-    console.log(usersStore.currentUserId, post.authorId);
     if(!usersStore.currentUserId) {
         return false
     }
