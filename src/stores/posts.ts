@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { Post, today, thisWeek, thisMonth, TimelinePost } from '../posts'
+import { Post, TimelinePost } from '../posts'
 import { Period } from '../constants'
 import { DateTime } from "luxon";
 
