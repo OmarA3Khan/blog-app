@@ -22,8 +22,8 @@ async function logout() {
                 <button class="button" @click="logout()">Log Out</button>
             </div>
             <div v-else class="buttons">
-                <button class="button" @click="modal.showModal('signUp')">Sign Up</button>
-                <button class="button" @click="modal.showModal('signIn')">Sign In</button>
+                <button id="sign-up" class="button" @click="modal.showModal('signUp')">Sign Up</button>
+                <button data-testid="sign-in" class="button" @click="modal.showModal('signIn')">Sign In</button>
             </div>
         </div>
     </div>
