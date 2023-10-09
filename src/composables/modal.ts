@@ -9,7 +9,7 @@ export function useModal() {
     return {
         show,
         component,
-        showModal: (type: 'signUp' | 'signIn') => {
+        showModal: (type: 'signIn' | 'signUp') => {
             (show.value = true);
             switch (type) {
                 case 'signIn' : return component.value = SignInForm

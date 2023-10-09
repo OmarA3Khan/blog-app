@@ -4,7 +4,7 @@ import { validate, length, required } from '../validation';
 import { NewUser } from '../users'
 import FormInput from './FormInput.vue';
 
-const props = defineProps<{
+defineProps<{
     error?: string,
     formType?: 'signIn' | 'signUp',
 }>()
@@ -15,25 +15,13 @@ const emit = defineEmits<{
 
 const username = ref('')
 const usernameStatus = computed(() => {
-    if (props.formType === 'signUp') {
-        return validate(username.value, [required, length({min: 5, max: 10})])
-    } else {
-        return {
-            valid: true
-        }
-    }
-});
+  return validate(username.value, [required, length({ min: 5, max: 10 })])
+})
 
 const password = ref('')
 const passwordStatus = computed(() => {
-  if (props.formType === 'signUp') {
-    return validate(password.value, [required, length({min: 8, max: 40})]);
-    } else {
-        return {
-            valid: true
-        }
-    }
-});
+  return validate(password.value, [required, length({ min: 10, max: 40 })])
+})
 
 const isInvalid = computed(() => {
     return (!usernameStatus.value.valid || !passwordStatus.value.valid)
@@ -58,8 +46,8 @@ async function handleSubmit () {
 
 <template>
     <form class="form" @submit.prevent="handleSubmit">
-        <FormInput name="Username" v-model="username" :status="usernameStatus" type="text" />
-        <FormInput name="Password" v-model="password" :status="passwordStatus" type="password" />
+        <FormInput data-testid="username" name="Username" v-model="username" :status="usernameStatus" type="text" />
+        <FormInput data-testid="password" name="Password" v-model="password" :status="passwordStatus" type="password" />
         <div class="is-danger help">
             {{ error }}
         </div>

@@ -7,7 +7,7 @@ import { NewUser } from '../users';
 
 const usersStore = useUsers();
 const modal = useModal();
-const error = ref('')
+const error = ref('');
 
 async function hadnleSignIn (newUser: NewUser ) {
     const body = JSON.stringify(newUser)
@@ -29,5 +29,5 @@ async function hadnleSignIn (newUser: NewUser ) {
 </script>
 
 <template>
-    <UserForm @submit="hadnleSignIn" :error="error" />
+    <UserForm id="signin-form" @submit="hadnleSignIn" :error="error" />
 </template>
